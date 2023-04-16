@@ -6,10 +6,25 @@ public class Dev {
     private String nome;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private Set<Conteudo> desafios = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
+    }
+
+    public void inscreverDesafio(Desafio desafio){
+
+        if(this.calcularTotalXp() > 100d){
+
+            this.desafios.add(desafio);
+            desafio.getDevsInscritos().add(this);
+            System.out.println("Parabéns " + this.nome + " você está cadastrado no desafio "+ desafio.getTitulo() +" com sucesso!");
+        } else {
+            System.out.println("Experiencia insuficiente, estude mais!");
+        }
+
+
     }
 
     public void progredir() {
@@ -62,6 +77,14 @@ public class Dev {
         this.conteudosConcluidos = conteudosConcluidos;
     }
 
+    public Set<Conteudo> getDesafios() {
+        return desafios;
+    }
+
+    public void setDesafios(Set<Conteudo> desafios) {
+        this.desafios = desafios;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,4 +97,5 @@ public class Dev {
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
     }
+
 }

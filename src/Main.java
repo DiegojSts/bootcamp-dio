@@ -1,7 +1,4 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 
@@ -22,6 +19,16 @@ public class Main {
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
+        Desafio desafio = new Desafio();
+        desafio.setTitulo("Estrutura de Dados");
+        desafio.setDescricao("Desafio de estrutura de dados em java");
+        desafio.setDone(false);
+
+        Desafio desafio2 = new Desafio();
+        desafio2.setTitulo("Collections");
+        desafio2.setDescricao("Desafio de collections em java");
+        desafio2.setDone(false);
+
         /*System.out.println(curso1);
         System.out.println(curso2);
         System.out.println(mentoria);*/
@@ -38,7 +45,7 @@ public class Main {
         devCamila.inscreverBootcamp(bootcamp);
         System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
         devCamila.progredir();
-        devCamila.progredir();
+        devCamila.inscreverDesafio(desafio);
         System.out.println("-");
         System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
         System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
@@ -52,7 +59,7 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         devJoao.progredir();
         devJoao.progredir();
-        devJoao.progredir();
+        devJoao.inscreverDesafio(desafio2);
         System.out.println("-");
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
